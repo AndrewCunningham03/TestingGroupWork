@@ -1,35 +1,40 @@
 package week03.classicmodels.persistence;
 
+import org.junit.jupiter.api.Test;
 import week03.classicmodels.business.Employee;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeDaoImplTest {
 
-    @org.junit.jupiter.api.Test
-    void getAllEmployees_NoneFound() {
+    @Test
+    void getAllEmployees_Found() {
+        System.out.println("Testing to find one");
         EmployeeDao empDao = new EmployeeDaoImpl();
         List<Employee> results = empDao.getAllEmployees();
-        assertEquals(0, results.size());
+        Employee actualResult = results.get(results.size()-2);;
+        Employee expectedResult = new Employee(1625,"kato","Yoshimi","x102","ykato@classicmodelcars.com","5",1621,"Sales Rep");
+        assertEquals(expectedResult,actualResult);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getAllEmployees_AllFound() {
         EmployeeDao empDao = new EmployeeDaoImpl();
         List<Employee> results = empDao.getAllEmployees();
         assertEquals(0, results.size());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getById_NoMatchFound() {
         EmployeeDao empDao = new EmployeeDaoImpl();
         Employee result = empDao.getById(1);
         assertNull(result);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getById_MatchFound() {
         EmployeeDao empDao = new EmployeeDaoImpl();
         Employee expected = new Employee(1625, "Kato", "Yoshimi", "x102", "ykato@classicmodelcars.com", "5", 1621,
