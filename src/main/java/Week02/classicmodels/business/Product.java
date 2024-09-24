@@ -1,4 +1,4 @@
-package week03.classicmodels.business;
+package Week02.classicmodels.business;
 
 public class Product {
     /*
